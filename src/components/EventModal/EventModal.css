@@ -1,0 +1,14 @@
+.create-event-wrapper {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-event-field {
+    margin-bottom: 10px;
+}
+
+.time-picker {
+    width: 170px;
+    margin-bottom: 10px;
+}

@@ -23,7 +23,8 @@
         "react/jsx-filename-extension": [
             1,
             { "extensions": [".js", ".jsx", ".tsx", ".ts"] }
-        ]
+        ],
+        "react/prop-types": "off"
     },
     "settings": {
         "import/resolver": {
