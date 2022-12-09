@@ -1,14 +1,19 @@
-.create-event-wrapper {
-    padding: 10px 0;
+.create-event-form {
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
 }
 
-.new-event-field {
+.time-picker {
+    width: 320px;
+}
+
+.buttons-wrapper {
+    display: flex;
+    margin-left: auto;
     margin-bottom: 10px;
 }
 
-.time-picker {
-    width: 170px;
-    margin-bottom: 10px;
+.button {
+    margin-left: 10px;
 }

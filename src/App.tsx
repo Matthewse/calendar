@@ -1,10 +1,14 @@
 import { FC } from 'react';
-import Event from './pages/Event';
+import { Route, Routes } from 'react-router-dom';
+import { Home, Event } from './pages';
 
 const App: FC = () => {
     return (
         <div className="App">
-            <Event />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/:id" element={<Event />} />
+            </Routes>
         </div>
     );
 };

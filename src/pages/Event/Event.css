@@ -1,0 +1,8 @@
+.wrapper {
+    padding: 20px;
+}
+
+.event-card {
+    width: 50%;
+    min-height: 350px;
+}

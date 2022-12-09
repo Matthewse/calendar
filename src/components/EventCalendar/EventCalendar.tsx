@@ -1,11 +1,13 @@
+import { FC, ReactNode } from 'react';
 import { Calendar } from 'antd';
+import type { Dayjs } from 'dayjs';
 
 interface ICalendarProps {
-    onDateSelect: () => void;
+    renderCell: (value: Dayjs) => ReactNode;
 }
 
-const EventCalendar: React.FC<ICalendarProps> = ({ onDateSelect }) => {
-    return <Calendar onSelect={onDateSelect} />;
+const EventCalendar: FC<ICalendarProps> = ({ renderCell }) => {
+    return <Calendar dateCellRender={renderCell} />;
 };
 
 export default EventCalendar;
