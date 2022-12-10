@@ -1,32 +1,58 @@
 import { FC } from 'react';
 import { Button, Form, Input, Modal, TimePicker } from 'antd';
+import type { Dayjs } from 'dayjs';
 import { getRequiredMessage } from '../../utils';
+import { IEvent } from '../../models/IEvent';
 import './EventModal.css';
 
 const { RangePicker } = TimePicker;
 
-interface IEventModalProps {
+interface EventModalProps {
     title: string;
     isOpen: boolean;
     closeModal: () => void;
+    submitForm?: (formValues: IEvent) => void;
 }
 
-const EventModal: FC<IEventModalProps> = ({ title, isOpen, closeModal }) => {
+interface FormValues {
+    eventName: string;
+    time?: Dayjs;
+}
+
+const EventModal: FC<EventModalProps> = ({
+    title,
+    isOpen,
+    closeModal,
+    submitForm,
+}) => {
+    const onFinish = (fieldsValue: FormValues) => {
+        const rangeTimeValue = fieldsValue['time'];
+        const values = {
+            ...fieldsValue,
+            startTime: rangeTimeValue && rangeTimeValue[0].format('hh:mm'),
+            endTime: rangeTimeValue && rangeTimeValue[1].format('hh:mm'),
+        };
+        delete values.time;
+        submitForm && submitForm(values);
+    };
+
     return (
         <Modal title={title} open={isOpen} onCancel={closeModal} footer={false}>
             <Form
                 name="basic"
                 className="create-event-form"
-                // onFinish={onFinish}
-                // onFinishFailed={onFinishFailed}
+                onFinish={onFinish}
             >
                 <Form.Item
-                    name="username"
+                    name="eventName"
                     rules={getRequiredMessage('Введите название события')}
                 >
                     <Input placeholder="Название" />
                 </Form.Item>
-                <Form.Item rules={getRequiredMessage('Выберите время события')}>
+                <Form.Item
+                    name="time"
+                    rules={getRequiredMessage('Выберите время события')}
+                >
                     <RangePicker
                         className="time-picker"
                         placeholder={['Время начала', 'Время окончания']}
