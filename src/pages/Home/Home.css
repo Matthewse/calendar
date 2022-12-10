@@ -1,3 +1,7 @@
+.ant-picker-calendar-mode-switch {
+    display: none;
+}
+
 .wrapper {
     padding: 20px;
 }
