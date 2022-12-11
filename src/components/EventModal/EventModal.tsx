@@ -15,7 +15,7 @@ interface EventModalProps {
 }
 
 interface FormValues {
-    eventName: string;
+    name: string;
     time?: Dayjs;
 }
 
@@ -39,12 +39,12 @@ const EventModal: FC<EventModalProps> = ({
     return (
         <Modal title={title} open={isOpen} onCancel={closeModal} footer={false}>
             <Form
-                name="basic"
+                name="event-form"
                 className="create-event-form"
                 onFinish={onFinish}
             >
                 <Form.Item
-                    name="eventName"
+                    name="name"
                     rules={getRequiredMessage('Введите название события')}
                 >
                     <Input placeholder="Название" />

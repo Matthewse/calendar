@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { Button, Card } from 'antd';
+import { useParams } from 'react-router-dom';
 import { eventSlice } from '../../store/reducers/EventSlice';
 import { useAppDispatch } from '../../hooks/redux';
 import { EventModal } from '../../components';
@@ -8,14 +9,16 @@ import './Event.css';
 
 const Event: FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { addEvent } = eventSlice.actions;
     const dispatch = useAppDispatch();
+    const { id } = useParams();
+    const { addEvent } = eventSlice.actions;
 
     const openModalHandler = () => setIsModalOpen(true);
     const closeModalHandler = () => setIsModalOpen(false);
 
     const submitFormHandler = (formValues: IEvent) => {
-        console.log(formValues)
+        formValues.date = id;
+        dispatch(addEvent(formValues));
     };
 
     return (

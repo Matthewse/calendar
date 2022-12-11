@@ -3,11 +3,13 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { IEvent } from "../../models/IEvent";
 
 interface EventState {
-    events: IEvent[]
+    events: {
+        [key: string]: IEvent[]
+    }
 }
 
 const initialState: EventState = {
-    events: []
+    events: {}
 }
 
 export const eventSlice = createSlice({
@@ -15,7 +17,13 @@ export const eventSlice = createSlice({
     initialState,
     reducers: {
         addEvent(state, action: PayloadAction<IEvent>) {
-            state.events = [...state.events, action.payload];
+            if (action.payload.date) {
+                if (state.events[action.payload.date]?.length > 0) {
+                    state.events[action.payload.date].push(action.payload);
+                } else {
+                    state.events[action.payload.date] = [action.payload];
+                }
+            }
         }
     }
 });

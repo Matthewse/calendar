@@ -1,5 +1,6 @@
 export interface IEvent {
-    eventName: string,
+    name: string,
     startTime: string,
     endTime: string,
+    date?: string,
 }
