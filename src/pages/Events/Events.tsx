@@ -26,6 +26,7 @@ const Event: FC = () => {
     const submitFormHandler = (formValues: IEvent) => {
         formValues.date = id;
         dispatch(addEvent(formValues));
+        setIsModalOpen(false);
     };
 
     return (

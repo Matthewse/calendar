@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button, Form, Input, Modal, TimePicker } from 'antd';
+import { Button, Form, Input, Modal, TimePicker, message } from 'antd';
 import type { Dayjs } from 'dayjs';
 import { getRequiredMessage } from '../../utils';
 import { IEvent } from '../../models/IEvent';
@@ -25,6 +25,9 @@ const EventModal: FC<EventModalProps> = ({
     closeModal,
     submitForm,
 }) => {
+    const [messageApi, contextHolder] = message.useMessage();
+    const [form] = Form.useForm();
+
     const onFinish = (fieldsValue: FormValues) => {
         const rangeTimeValue = fieldsValue['time'];
         const values = {
@@ -34,11 +37,18 @@ const EventModal: FC<EventModalProps> = ({
         };
         delete values.time;
         submitForm && submitForm(values);
+        messageApi.open({
+            type: 'success',
+            content: 'Событие добавлено!',
+        });
+        form.resetFields();
     };
 
     return (
         <Modal title={title} open={isOpen} onCancel={closeModal} footer={false}>
+            {contextHolder}
             <Form
+                form={form}
                 name="event-form"
                 className="create-event-form"
                 onFinish={onFinish}
