@@ -1,4 +1,4 @@
-import { Event } from './Event';
+import { Events } from './Events';
 import { Home } from './Home';
 
-export { Event, Home };
+export { Events, Home };

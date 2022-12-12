@@ -1,0 +1,9 @@
+.event-list {
+    margin-top: 20px;
+}
+
+.event {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}

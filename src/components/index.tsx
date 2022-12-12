@@ -1,4 +1,5 @@
 import { EventCalendar } from './EventCalendar';
 import { EventModal } from './EventModal';
+import { EventList } from './EventList';
 
-export { EventCalendar, EventModal };
+export { EventCalendar, EventModal, EventList };

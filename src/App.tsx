@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from './hooks/redux';
-import { Home, Event } from './pages';
+import { Home, Events } from './pages';
 
 const App: FC = () => {
     const { events } = useAppSelector((state) => state.eventReducer);
@@ -9,7 +9,7 @@ const App: FC = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:id" element={<Event />} />
+            <Route path="/:id" element={<Events />} />
         </Routes>
     );
 };
