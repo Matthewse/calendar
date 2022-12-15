@@ -17,3 +17,16 @@
     width: 100%;
     height: 100%;
 }
+
+.event-items-list {
+    padding: 5px 10px;
+}
+
+.event-badge {
+    width: calc(85%);
+    overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
