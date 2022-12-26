@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Button, Form, Input, Modal, TimePicker, message } from 'antd';
 import type { Dayjs } from 'dayjs';
+import { v4 as uuid } from 'uuid';
 import { getRequiredMessage } from '../../utils';
 import { IEvent } from '../../models/IEvent';
 import './EventModal.css';
@@ -17,6 +18,7 @@ interface EventModalProps {
 interface FormValues {
     name: string;
     time?: Dayjs;
+    id: string;
 }
 
 const EventModal: FC<EventModalProps> = ({
@@ -36,6 +38,7 @@ const EventModal: FC<EventModalProps> = ({
             endTime: rangeTimeValue && rangeTimeValue[1].format('hh:mm'),
         };
         delete values.time;
+        values.id = uuid();
         submitForm && submitForm(values);
         messageApi.open({
             type: 'success',

@@ -17,13 +17,19 @@ export const eventSlice = createSlice({
     initialState,
     reducers: {
         addEvent(state, action: PayloadAction<IEvent>) {
-            if (action.payload.date) {
-                if (state.events[action.payload.date]?.length > 0) {
-                    state.events[action.payload.date].push(action.payload);
+            const { date } = action.payload;
+            if (date) {
+                if (state.events[date]?.length > 0) {
+                    state.events[date].push(action.payload);
                 } else {
-                    state.events[action.payload.date] = [action.payload];
+                    state.events[date] = [action.payload];
                 }
             }
+        },
+        deleteEvent(state, action: PayloadAction<{ id: string, date: string }>) {
+            const { date } = action.payload;
+            state.events[date] = state.events[date]
+                .filter(item => item.id !== action.payload.id);
         }
     }
 });

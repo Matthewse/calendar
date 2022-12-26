@@ -4,6 +4,11 @@
 
 .event {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     margin-bottom: 5px;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
 }

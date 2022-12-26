@@ -13,7 +13,7 @@ const Event: FC = () => {
     const { events } = useAppSelector((state) => state.eventReducer);
     const dispatch = useAppDispatch();
     const { id } = useParams();
-    const { addEvent } = eventSlice.actions;
+    const { addEvent, deleteEvent } = eventSlice.actions;
 
     useEffect(() => {
         const dateEvents = id && events[id];
@@ -29,13 +29,20 @@ const Event: FC = () => {
         setIsModalOpen(false);
     };
 
+    const deleteEventHandler = (eventId: string) => {
+        dispatch(deleteEvent({id: eventId, date: id || '' }));
+    };
+
     return (
         <div className="wrapper">
             <Card className="event-card">
                 <Button type="primary" onClick={openModalHandler}>
                     Добавить событие
                 </Button>
-                <EventList selectDateEvents={selectDateEvents} />
+                <EventList
+                    selectDateEvents={selectDateEvents}
+                    deleteEventHandler={deleteEventHandler}
+                />
                 <EventModal
                     title="Добавление события"
                     isOpen={isModalOpen}
