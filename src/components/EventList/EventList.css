@@ -8,6 +8,10 @@
     margin-bottom: 5px;
 }
 
+.event-wrapper {
+    width: 100%;
+}
+
 .text-wrapper {
     display: flex;
     flex-direction: column;

@@ -17,7 +17,7 @@ const EventList: FC<EventListProps> = ({
     return (
         <div className="event-list">
             {selectDateEvents?.length ? (
-                <Space direction="vertical">
+                <Space direction="vertical" className="event-wrapper">
                     {selectDateEvents.map((event) => (
                         <div key={event.id} className="event">
                             <div className="text-wrapper">
